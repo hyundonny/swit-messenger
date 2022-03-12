@@ -5,7 +5,7 @@
 <br/>
 
 ## 📌 배포
-배포 링크: [https://youthful-almeida-e80ef9.netlify.app/](https://youthful-almeida-e80ef9.netlify.app/)
+배포 링크: [SWIT ](https://swit-messenger.vercel.app/)
 
 <br/>
 
@@ -64,74 +64,21 @@
 
 ## 📌 역할  
 
-
-### 김태희
-
-- 역할
-    - 리덕스 툴킷을 사용하여, 메시지 추가, 메시지 삭제, 메시지 정렬 등의 기능을 구현하는 역할을 맡았다.
-    - (구현) messageSlice에 add, delete액션을 만들었고, 커스텀 훅 useMessage를 통해 useSelector를, useMessageAction useDispatch를 할 수 있도록 구현하였다.
-- 회고
-    - 이번 프로젝트하면서 작성한 블로그 : [[김태희 - Messanger Service]](https://www.notion.so/7245b5bb8cf341a08513b483f2676de4)
-    - 메시지를 추가하면, 채팅 내용 + 유저 정보 형태로 메시지 데이터 모델을 추가해야 했다. 그래서 유저 정보 리덕스를 구현한 팀원에게 질문하고 설명을 들으면서 해결하였고, 이 때 협업의 중요함을 느꼈다. 이를 바탕으로 본인이 작성한 리덕스를 채팅창 코드에서 사용할 때는 팀원분이 해당 리덕스를 잘 이해하고 사용할 수 있도록 줌을 통해 의사소통하는 시간을 가졌다.
 ### 문현돈
 
 - 역할
     - 전반적인 스타일링 담당. 이번 과제는 디자인이 따로 주어지지 않았기 때문에, 과제를 시작하기 전 [dribbble](https://dribbble.com/search/shots/popular/web-design?q=messenger)에 올라온 다양한 메신저앱 디자인, 그리고 Skype, Telegram, Discord 등 인기 메신저 앱 디자인을 참고해 이번 프로젝트를 어떻게 구현할 지 정했다. 미디어 쿼리를 활용해 모바일 및 데스크탑 크기에 맞춰 반응형으로 사이드바 및 대화 목록, 메시지 입력창 구현했다.
 - 회고
     - 이번 과제는 이전과 달리 비즈니스 로직보다는 오로지 디자인에만 집중했다. 특이하게도 텍스트로만 과제가 주어져 초반에 디자인을 정하는데 많은 시간을 할애했다. 그동안 코드에만 집중했었는데 이번 기회를 통해 데스크탑, 모바일 디자인을 직접 연구해보고 정해볼 수 있었다. 처음에는 대화 목록 기능이 만들어질 때까지 사이드바를 먼저 구현했는데, 대화 목록 컴포넌트와 사이드바 컴포넌트가 포지션상 겹칠 수 있다는 생각을 못한 채 그냥 만드는 실수를 범했다. 결국 대화 목록 컴포넌트까지 구현했을 때 모바일 화면에서 사이드바가 대화목록과 겹쳐버렸다. 여러 가지 방안을 강구해봤고, 최종적으로 택한 방법은 모바일 화면에서 사이드바가 닫혀있을 경우 position absolute를 활용해 화면 바깥으로 빼주는 것이다. 앞으로는 mock data를 활용하듯 mock component를 써서 위치를 임의로 잡는 연습을 해야할 것 같다.
-### 이경은
-
-- 역할
-    - 채팅 기능 구현 담당
-    - 입력 키 제어 구현 (shift+enter 시 줄바꿈, enter 시 submit, 미입력 예외 처리 등)
-    - submit 시 가장 마지막 대화로 이동시키는 기능, 답장 기능 등 채팅 관련 요구사항 구현
-- 회고
-    - 미리 mock 데이터를 만들어 useState를 활용해 대화 생성, 삭제를 미리 구현해놔서 redux 기능을 병합할 때, 빠르게 처리할 수 있었습니다.
-    - 과제를 진행하면 할수록, 점점 협업 컨벤션이나 코딩, 스타일 컨벤션을 맞춰가고 개선되어가는 것이 보여서 앞으로의 프로젝트와 협업이 기대됩니다!
-### 이욱창
-
-- 역할
-    - redux toolkit으로 초기셋팅을 담당, 테스트를 통해 reducer의 동작을 확인, 커스텀 훅으로 추상화
-    - 로그인 페이지 구현, 이상동작 감지 로직 추가, confirm, alert 모달 컴포넌트 구현
-    - persist-redux를 통해 유저가 브라우저를 닫지 않는 이상 로그아웃 되지 않도록 설정
-- 회고
-    - 지금까지 협업하면서 코딩 스타일이 각자 다른것들을 인지하고 있었지만, 구현할것이 많다는 핑계로 서로 맞추지 않았다. 이번 회의중에 한번 시간을 내 컨벤션에 대해 서로의 의견을 나누면서 알고 있는것들을 알려주기도 하고, 새로운것들을 배워 우리만의 간단한 프로젝트 컨벤션을 만든것이 가장 기억에 남는다. 앞으로 한 팀으로 남은 프로젝트를 진행할 때 좀 더 한 사람같은 코드를 작성할 수 있을것 같아 기대가 되고, 더 협업에 집중할 수 있을것같다.  
     
-    <br />
-    
-## 📌 함께 정한 컨벤션 
-| 항목      | 내용                       |
-| :-------------- | :-------------------------------- |
-| style 파일 이름  | styles.module.scss로 통일. (잘못된 예시 : component.module.scss) |
-| css  |  classname은 하이픈 사용하여 작명,  classnames 패키지 작성 후, const = cx라는 변수이름으로 통일 |
-| import  | Import 시 패키지,컴포넌트,기타 순으로 한줄 띄우기 |
-| propTypes   |  위치 : 컴포넌트 위, 필수 여부 : javascript 사용시 해당 패키지 꼭 쓸 것 |
-| 디렉토리명  |  하이픈 사용하여 작명, index.js로 통일 |
-
-
-<details>
-<summary>이유</summary>
-<div markdown="1">
-
-1. component.module.scss을 쓰는 팀원들이 있었는데, 현재 상황에서는 index.js라는 이름으로 
-컴포넌트 이름을 정했으므로, index와 같이 styles로 가는것이 깔끔하다고 생각해 결정
-2. 논의 결과 세계에서 많이 쓰는 컨벤션이라는 논리에 의해 결정
-3. 팀원들과 논의 결과, 가장 많이 쓰는 방식으로 결정
-4. 리액트 컴포넌트의 중요한 변수들이 위로 올라와야 한다는 의견과, 프롭스를 알아야 컴포넌트를 이해하기 쉽다는
-의견으로 좁혀서 결정
-5. 디렉토리는 케밥케이스, 컴포넌트명은 카멜케이스로 결정
-
-</div>
-</details>
-
-<br/ >
+<br />
 
 ## 📌 사용 기술 및 스택
 - Stack
     - `Redux Toolkit`
     - `React Hooks`
     - `scss-modules`
-    - Deploy : `Netilfy`
+    - Deploy : `Vercel`
     - Other : `Git / GitHub`
     - Build Tool (Create React App)
 
@@ -150,121 +97,3 @@
   ```bash
   npm install && npm run start
   ```
-  
-  <br/ >
- 
-## 📌 자료 구조
-```
-swit-messenger/src
-│ 
-├── App.js
-├── assets
-│   ├── icons
-│   │   ├── BitcoinIcon.js
-│   │   ├── ChatIcon.js
-│   │   ├── ChatIconFill.js
-│   │   ├── CheckIcon.js
-│   │   ├── ChevronDownIcon.js
-│   │   ├── CloseIcon.js
-│   │   ├── ControllerIcon.js
-│   │   ├── DeleteIcon.js
-│   │   ├── EarbudsIcon.js
-│   │   ├── MenuIcon.js
-│   │   ├── PeopleIcon.js
-│   │   ├── PlusIcon.js
-│   │   ├── CheckIcon.js
-│   │   ├── ReplyIcon.js
-│   │   ├── SendIcon.js
-│   │   ├── ThreeDotsIcon.js
-│   │   ├── WarningIcon.js
-│   │   └── switLogo.png
-│   └── images
-│       ├── member1.png
-│       ├── member10.png
-│       ├── member2.png
-│       ├── member3.png
-│       ├── member4.png
-│       ├── member5.png
-│       ├── member6.png
-│       ├── member7.png
-│       ├── member8.png
-│       └── member9.png
-├── components
-│   ├── chat
-│   │   ├── multiline-input
-│   │   │   ├── index.js
-│   │   │   └── styles.module.scss
-│   │   ├── reply-tag
-│   │   │   ├── index.js
-│   │   │   └── styles.module.scss
-│   │   ├── speech-bubble
-│   │   │   ├── index.js
-│   │   │   └── styles.module.scss
-│   │   ├── index.js
-│   │   └── styles.module.scss
-│   ├── modal
-│   │   ├── index.js
-│   │   ├── portal.js 
-│   │   └── style.module.css
-│   └── sidebar
-│       ├── contacts
-│       │   ├── contacts-item
-│       │   ├── contacts-menu-btn
-│       │   ├── index.js
-│       │   └── styles.module.scss
-│       ├── dropdown
-│       │   ├── index.js
-│       │   └── styles.module.scss
-│       ├── logout
-│       │   ├── index.js
-│       │   └── styles.module.scss
-│       ├── profile
-│       │   ├── index.js
-│       │   └── styles.module.scss
-│       ├── shared
-│       │   ├── dropdown
-│       │   └── data.js
-│       ├── switch
-│       │   ├── index.js
-│       │   └── styles.module.scss
-│       ├── toggle
-│       │   ├── index.js
-│       │   └── styles.module.scss
-│       ├── index.js
-│       └── styles.module.scss
-├── constants
-│   ├── conversation.js
-│   ├── member.js
-│   └── replyboundary.js
-├── hooks
-│   ├── useMessage.js
-│   ├── useMessageAction.js
-│   ├── useModal.js
-│   ├── useModalAction.js
-│   ├── useUser.js
-│   └── useUserAction.js
-├── index.js
-├── pages
-│   ├── chat
-│   │   └── index.js
-│   └── login
-│       ├── index.js
-│       └── login.module.scss
-├── redux
-│   ├── slices
-│   │    ├── index.js
-│   │    ├── message.js
-│   │    ├── modal.js
-│   │    ├── modal.spec.js
-│   │    ├── user.js
-│   │    └── user.spec.js
-│   └── store.js
-├── styles
-│   ├── _reset.scss
-│   └── variable.scss
-└── utils
-    ├── checkblank.js
-    ├── getSortedData.js
-    ├── newline.js
-    └── textLenOverCut.js
-```
