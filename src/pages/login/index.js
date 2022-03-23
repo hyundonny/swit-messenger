@@ -11,14 +11,11 @@ import logo from 'assets/images/logo.png';
 
 const cx = classNames.bind(styles);
 
-function Login() {
+function LoginPage() {
   const [name, setName] = useState('');
-  const [isFilledOnSubmit, setIsFilledOnSubmit] = useState(true);
-  const changeName = event => {
-    setName(event.currentTarget.value.trim());
-  };
-  const clearUnderline = () => {
-    setIsFilledOnSubmit(true);
+
+  const changeName = e => {
+    setName(e.currentTarget.value.trim());
   };
 
   const { login } = useUserAction();
@@ -29,7 +26,6 @@ function Login() {
   const goToChat = event => {
     event.preventDefault();
     if (!name) {
-      setIsFilledOnSubmit(false);
       setIsModalOpen(true);
       return;
     }
@@ -45,33 +41,27 @@ function Login() {
 
   return (
     <div className={cx('container')}>
-      <img className={cx('logo')} src={logo} alt="lgoo" />
+      <img className={cx('logo')} src={logo} alt="logo" />
       <div className={cx('login-box')}>
         <div className={cx('title-box')}>
-          <h1 className={cx('title')}>환영합니다 !</h1>
-          <h3 className={cx('sub-title')}>
+          <h1 className={cx('title')}>환영합니다.</h1>
+          <p className={cx('sub-title')}>
             채팅방에 입장하려면 이름을 입력해주세요.
-          </h3>
+          </p>
         </div>
         <form onSubmit={goToChat} className={cx('login-form')}>
           <input
             placeholder="이름을 입력해주세요"
             value={name || ''}
             onChange={changeName}
-            onFocus={clearUnderline}
             className={cx('name-input')}
             type="text"
             maxLength={10}
+            autoFocus={true}
           />
-          <span
-            className={cx('underline', { 'red-underline': !isFilledOnSubmit })}
-          />
-          <input
-            className={cx('submit-button')}
-            type="submit"
-            value={'입장하기'}
-            onClick={() => {}}
-          />
+          <button className={cx('submit-button')} type="submit">
+            입장하기
+          </button>
         </form>
       </div>
       {isModalOpen && (
@@ -85,4 +75,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;

@@ -25,8 +25,7 @@ export const messageSlice = createSlice({
     },
 
     remove: (state, { payload }) => {
-      const curId = payload.id;
-      return state.filter(message => message.id !== curId);
+      return state.filter(message => message.id !== payload.id);
     },
   },
 });
