@@ -9,6 +9,13 @@ import memberImage8 from 'assets/images/member8.png';
 import memberImage9 from 'assets/images/member9.png';
 import memberImage10 from 'assets/images/member10.png';
 
+export const ME = {
+  userId: 4,
+  userName: '나',
+  profileImage: memberImage4,
+  status: '온라인',
+};
+
 const MEMBERS = [
   {
     userId: 1,
