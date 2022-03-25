@@ -23,7 +23,7 @@ function LoginPage() {
 
     login({
       userId: ME.userId,
-      userName: name,
+      userName: name.trim(),
       profileImage: ME.profileImage,
     });
 
