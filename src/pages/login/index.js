@@ -31,18 +31,23 @@ function LoginPage() {
   return (
     <div className={cx('page')}>
       <div className={cx('login-container')}>
-        <img src={logo} alt="Swit logo" className={cx('logo')} />
         <h1 className={cx('login-title')}>환영합니다!</h1>
         <p className={cx('login-subtitle')}>
           채팅방에서 사용할 이름을 입력해주세요.
         </p>
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          className={cx('login-input')}
-          placeholder="이름"
-        />
+        <div className={cx('input-container')}>
+          <input
+            id="login-input"
+            type="text"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            className={cx('login-input')}
+            required={true}
+          />
+          <label htmlFor="login-input" className={cx('input-label')}>
+            이름
+          </label>
+        </div>
         <button type="button" className={cx('login-button')}>
           입장하기
         </button>
