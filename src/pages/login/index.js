@@ -5,32 +5,42 @@ import classNames from 'classnames/bind';
 import useUserAction from 'hooks/useUserAction';
 import styles from 'pages/login/styles.module.scss';
 import { ME } from 'constants/members';
-import logo from 'assets/images/logo.png';
 
 const cx = classNames.bind(styles);
 
 function LoginPage() {
   const [name, setName] = useState('');
-
+  const [error, setError] = useState(false);
   const { login } = useUserAction();
   const navigate = useNavigate();
 
-  const goToChat = event => {
-    event.preventDefault();
+  const goToChat = e => {
+    e.preventDefault();
 
-    if (!name) return;
+    if (!name) {
+      return setError(prev => !prev);
+    }
 
     login({
       userId: ME.userId,
       userName: name,
       profileImage: ME.profileImage,
     });
+
     navigate('/chat');
+  };
+
+  const handleChange = e => {
+    if (error) {
+      setError(prev => !prev);
+    }
+
+    setName(e.target.value);
   };
 
   return (
     <div className={cx('page')}>
-      <div className={cx('login-container')}>
+      <form className={cx('login-container')} onSubmit={goToChat} noValidate>
         <h1 className={cx('login-title')}>환영합니다!</h1>
         <p className={cx('login-subtitle')}>
           채팅방에서 사용할 이름을 입력해주세요.
@@ -40,18 +50,18 @@ function LoginPage() {
             id="login-input"
             type="text"
             value={name}
-            onChange={e => setName(e.target.value)}
-            className={cx('login-input')}
+            onChange={handleChange}
+            className={cx({ 'login-input': true, error })}
             required={true}
           />
           <label htmlFor="login-input" className={cx('input-label')}>
             이름
           </label>
         </div>
-        <button type="button" className={cx('login-button')}>
+        <button type="submit" className={cx('login-button')}>
           입장하기
         </button>
-      </div>
+      </form>
     </div>
   );
 }
