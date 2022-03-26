@@ -11,7 +11,7 @@ import Dropdown from 'components/sidebar/dropdown';
 
 import { messageItems } from 'components/sidebar/shared/data';
 
-import CHATROOMES from 'constants/chatrooms';
+import CHATROOMS from 'constants/chatrooms';
 import CHANNELS from 'constants/channels';
 
 import styles from 'components/sidebar/styles.module.scss';
@@ -29,7 +29,7 @@ function Sidebar({ isOpen, toggle }) {
   const sidebarContents =
     activeSwitch === messageItems[0].name ? (
       <>
-        <Dropdown title={messageItems[0].name} items={CHATROOMES} />
+        <Dropdown title={messageItems[0].name} items={CHATROOMS} />
         <Dropdown title={messageItems[1].name} items={CHANNELS} />
       </>
     ) : (

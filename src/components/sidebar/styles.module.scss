@@ -1,3 +1,5 @@
+@import 'styles/variable.scss';
+
 .sidebar-container {
   position: absolute;
   left: 0;
@@ -48,5 +50,27 @@
 .sidebar-contents {
   padding: 2rem 0;
   width: 100%;
-  overflow-y: hidden;
+  overflow: auto;
+  padding-right: 8px;
+}
+
+.sidebar-contents::-webkit-scrollbar {
+  width: 4px;
+  display: none;
+}
+
+.sidebar-contents:hover {
+  &::-webkit-scrollbar {
+    display: block;
+  }
+
+  padding-right: 4px;
+}
+
+.sidebar-contents::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-contents::-webkit-scrollbar-thumb {
+  background: $secondary;
 }
