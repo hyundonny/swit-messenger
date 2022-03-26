@@ -17,7 +17,8 @@ function LoginPage() {
   const goToChat = e => {
     e.preventDefault();
 
-    if (!name) {
+    if (name.trim() === '') {
+      setName('');
       return setError(prev => !prev);
     }
 
