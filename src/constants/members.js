@@ -77,6 +77,60 @@ const MEMBERS = [
     profileImage: memberImage10,
     status: '오프라인',
   },
+  {
+    userId: 11,
+    userName: '디디에 드로그바',
+    profileImage: memberImage5,
+    status: '오프라인',
+  },
+  {
+    userId: 12,
+    userName: '페르난도 토레스',
+    profileImage: memberImage7,
+    status: '오프라인',
+  },
+  {
+    userId: 13,
+    userName: '리오넬 메시',
+    profileImage: memberImage6,
+    status: '오프라인',
+  },
+  {
+    userId: 14,
+    userName: '홍철',
+    profileImage: memberImage5,
+    status: '오프라인',
+  },
+  {
+    userId: 15,
+    userName: '김태환',
+    profileImage: memberImage4,
+    status: '오프라인',
+  },
+  {
+    userId: 16,
+    userName: '이창민',
+    profileImage: memberImage3,
+    status: '오프라인',
+  },
+  {
+    userId: 17,
+    userName: '차두리',
+    profileImage: memberImage2,
+    status: '오프라인',
+  },
+  {
+    userId: 18,
+    userName: '윤석영',
+    profileImage: memberImage10,
+    status: '오프라인',
+  },
+  {
+    userId: 19,
+    userName: '이기제',
+    profileImage: memberImage1,
+    status: '오프라인',
+  },
 ];
 
 export default MEMBERS;

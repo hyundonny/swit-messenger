@@ -1,7 +1,12 @@
+@import 'styles/variable.scss';
+
 .contact-list {
   padding: 2rem 1rem;
-  overflow-y: auto;
-  max-height: 50vh;
+  overflow-y: scroll;
+  flex-grow: 1;
+
+  border: 1px solid #eee;
+  border-radius: 4px;
 }
 
 .contact-list::-webkit-scrollbar {
@@ -9,12 +14,17 @@
 }
 
 .contact-list::-webkit-scrollbar-track {
-  background: rgb(228, 228, 228);
+  background: transparent;
 }
 
 .contact-list::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
-  border: 3px solid rgb(138, 138, 138);
+  background: transparent;
+}
+
+.contact-list:hover {
+  &::-webkit-scrollbar-thumb {
+    background: $secondary;
+  }
 }
 
 .contact-list-empty {
