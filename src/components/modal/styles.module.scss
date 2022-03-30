@@ -1,65 +1,16 @@
 @import 'styles/variable.scss';
 
-* {
-  z-index: 1;
-}
-
-.background {
+.modal {
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
-}
 
-.contents {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  margin: 5rem;
-  padding: 2rem 1.5rem;
-  max-width: 35rem;
-  width: 100%;
-  min-height: 20rem;
-  border-radius: 5px;
-  background: #fff;
-}
-
-.message {
-  font-size: 1.6rem;
-}
-
-.button-box {
-  display: flex;
-  width: 100%;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
 
-  & > * + * {
-    margin-left: 2rem;
-  }
-}
-
-.button-basic {
-  padding: 0.9rem 2.5rem;
-  border: 1px solid $gray700;
-  border-radius: 1.5rem;
-  color: $gray800;
-  &:hover {
-    background-color: $gray100;
-  }
-}
-
-.button-dark {
-  color: $white;
-  background-color: $gray900;
-  border: 1px solid $gray900;
-  &:hover {
-    background-color: $black;
-    border: 1px solid $black;
-  }
+  z-index: 100;
 }

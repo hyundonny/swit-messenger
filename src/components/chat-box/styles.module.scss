@@ -1,0 +1,33 @@
+@import 'styles/variable.scss';
+
+.chat-box {
+  width: 100%;
+  overflow-y: auto;
+  flex: 1 1;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.chat-box::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+.chat-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.chat-box:hover {
+  &::-webkit-scrollbar-thumb {
+    background: $secondary;
+  }
+}
+
+@media (min-width: 768px) {
+  .chat-box {
+    padding: 2rem;
+  }
+}

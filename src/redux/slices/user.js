@@ -27,10 +27,10 @@ const userSlice = createSlice({
     },
     logout: () => initialState,
     editUserName: (state, { payload }) => {
-      state.userName = payload.userName;
+      state.userName = payload;
     },
     changeChattingStatus: state => {
-      state.isChatAvailable = !state.isChatAvailable;
+      return !state.isChatAvailable;
     },
   },
 });

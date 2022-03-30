@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 
-import styles from 'components/sidebar/container/styles.module.scss';
+import Modal from 'components/modal';
+import SettingsModal from 'components/settings-modal';
 
-// desktop: 열고 닫기 기능 없이 항상 visible
-// mobile: 열고 닫기 기능 존재, 열렸을 때 화면 전체를 가림
+import styles from 'components/sidebar/container/styles.module.scss';
+import GearIcon from 'assets/icons/GearIcon';
 
 const cx = classNames.bind(styles);
 
@@ -14,15 +16,33 @@ SidebarContainer.propTypes = {
 };
 
 function SidebarContainer({ isOpen, children }) {
+  const [settingsModalOpen, setSettingsModalOpen] = useState(false);
   const className = cx({
     'sidebar-container': true,
     open: isOpen,
   });
 
+  const toggleModal = () => {
+    setSettingsModalOpen(prev => !prev);
+  };
+
   return (
-    <div className={className}>
-      <div className={cx('sidebar-inner-container')}>{children}</div>
-    </div>
+    <>
+      <div className={className}>
+        <button
+          type="button"
+          className={cx('sidebar-settings-icon')}
+          onClick={toggleModal}>
+          <GearIcon />
+        </button>
+        <div className={cx('sidebar-inner-container')}>{children}</div>
+      </div>
+      {settingsModalOpen && (
+        <Modal>
+          <SettingsModal closeModal={toggleModal} />
+        </Modal>
+      )}
+    </>
   );
 }
 

@@ -1,0 +1,46 @@
+@import 'styles/variable.scss';
+
+.message-delete-modal {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 4px;
+  min-width: 25rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.warning-message {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  padding: 1rem;
+  border: 1px solid #eee;
+  width: 8rem;
+  color: #999;
+  transition: color 100ms ease;
+}
+
+.button.alert {
+  color: #fff;
+  background-color: rgb(224, 0, 0);
+}
+
+.button:hover {
+  border: 1px solid #ccc;
+  color: #555;
+}
+
+.button.alert:hover {
+  color: #fff;
+  border: 1px solid #eee;
+  background-color: rgb(196, 0, 0);
+}

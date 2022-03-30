@@ -1,43 +1,38 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import classNames from 'classnames/bind';
+import { Navigate } from 'react-router-dom';
 
 import Chat from 'components/chat';
-import Sidebar from 'components/sidebar';
-import Modal from 'components/modal';
+import SidebarContainer from 'components/sidebar/container';
+import Profile from 'components/sidebar/profile';
+import SidebarContents from 'components/sidebar/contents';
 
+import logo from 'assets/images/logo.png';
+import styles from 'pages/chat/styles.module.scss';
 import useUser from 'hooks/useUser';
 
+const cx = classNames.bind(styles);
+
 function ChatPage() {
-  const user = useUser();
-  const navigate = useNavigate();
+  const [sidebarOpen] = useState(false);
+  const { isLogin } = useUser();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const closeModal = () => setIsModalOpen(false);
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const toggleSidebar = () => {
-    setSidebarOpen(prev => !prev);
-  };
-
-  useEffect(() => {
-    if (!user.isLogin) {
-      setIsModalOpen(true);
-    }
-  }, [user]);
+  if (!isLogin) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <>
-      <Sidebar isOpen={sidebarOpen} toggle={toggleSidebar} />
+      <SidebarContainer isOpen={sidebarOpen}>
+        <Profile />
+        <SidebarContents />
+      </SidebarContainer>
       <main>
-        <Chat toggle={toggleSidebar} />
+        <div className={cx('top-bar')}>
+          <img src={logo} alt="Swit" className={cx('logo')} />
+        </div>
+        <Chat />
       </main>
-      {isModalOpen && (
-        <Modal
-          message="이름을 입력해 로그인 해주세요️!"
-          callback={() => navigate('/')}
-          onClose={closeModal}
-        />
-      )}
     </>
   );
 }

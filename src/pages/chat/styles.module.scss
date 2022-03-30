@@ -1,0 +1,14 @@
+.top-bar {
+  padding: 2rem;
+  position: relative;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 2rem;
+  width: 2rem;
+}

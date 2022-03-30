@@ -1,12 +1,18 @@
 .sidebar-container {
   background: white;
   position: relative;
-  z-index: 9999;
+  z-index: 10;
   overflow: hidden;
   border-right: 1px solid #eee;
   width: 0;
   opacity: 0;
   transition: width 200ms cubic-bezier(0.6, 0, 0.4, 1), opacity 200ms ease 300ms;
+}
+
+.sidebar-settings-icon {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }
 
 .sidebar-inner-container {

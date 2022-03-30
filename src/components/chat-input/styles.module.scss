@@ -1,0 +1,78 @@
+@import 'styles/variable.scss';
+
+.chat-input-section {
+  background-color: #fff;
+  padding: 1.4rem;
+}
+
+.chat-input-container {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.chat-input-reply-container {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #eee;
+  color: #888;
+}
+
+.chat-input-reply-content {
+  flex-grow: 1;
+}
+
+.chat-input-reply-title {
+  color: cornflowerblue;
+  margin-bottom: 2px;
+}
+
+.chat-input-delete-reply-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+}
+
+.chat-input-form {
+  display: flex;
+  gap: 2rem;
+  height: 20vh;
+  padding: 0 2rem;
+}
+
+.chat-input-textarea {
+  flex-grow: 1;
+  border: none;
+  padding: 1.5rem 0;
+  outline: none;
+}
+
+.chat-input-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.chat-input-send-button {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #ff515f;
+  transition: background-color 200ms ease;
+}
+
+.chat-input-send-button:hover {
+  background-color: #ff8791;
+}
+
+.chat-input-send-button:disabled {
+  cursor: not-allowed;
+  background: #ccc;
+}

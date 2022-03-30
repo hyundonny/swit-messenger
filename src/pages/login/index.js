@@ -54,6 +54,7 @@ function LoginPage() {
             onChange={handleChange}
             className={cx({ 'login-input': true, error })}
             required={true}
+            maxLength={10}
           />
           <label htmlFor="login-input" className={cx('input-label')}>
             이름

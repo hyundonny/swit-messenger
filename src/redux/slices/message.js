@@ -9,16 +9,18 @@ export const messageSlice = createSlice({
   reducers: {
     add: {
       reducer: (state, { payload }) => {
-        state.push({ ...payload, id: nanoid() });
+        state.push({ ...payload });
       },
-      prepare: ({ userId, userName, profileImage, content }) => {
+      prepare: ({ userId, userName, profileImage, content, reply }) => {
         return {
           payload: {
             userId,
             userName,
             profileImage,
             date: getSortedData(),
+            id: nanoid(),
             content,
+            reply,
           },
         };
       },
