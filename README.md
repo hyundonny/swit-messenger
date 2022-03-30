@@ -1,99 +1,113 @@
 # Swit 메신저
-## 📌 과제 정보
-로그인 페이지에서 받아 온 정보를 redux-persist를 통해 세션스토리지에 저장하고, 리덕스 툴킷을 사용하여 구현한 다양한 채팅 기능(메시지 전송, 삭제, 답장 등)을 제공합니다. 추가로 화면 좌측에는 유저들의 상태를 제공하는 페이지를 제작했습니다.
 
-<br/>
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
-## 📌 배포
-배포 링크: [SWIT ](https://swit-messenger.vercel.app/)
+배포 링크: [SWIT 메신저](https://swit-messenger.vercel.app/)
 
-<br/>
+## 구현 사항
 
-## 📌 팀원
-|[이욱창](https://github.com/wook95)|[김태희](https://github.com/tae100k)|[문현돈](https://github.com/hyundonny)|[이경은](https://github.com/2kyung19)|
-| ----- | ---- | ----- |  ----- |
-|<img src="https://avatars.githubusercontent.com/u/80494742?v=4" width="200"/>|<img src="https://avatars.githubusercontent.com/u/78027252?v=4" width="200" />| <img src="https://avatars.githubusercontent.com/u/10048956?v=4" width="200" />|<img src="https://avatars.githubusercontent.com/u/32586712?v=4" width="200" />
+로그인 페이지에서 입력받은 사용자 정보를 redux-persist를 통해 세션 스토리지에 저장하고, Redux Toolkit을 사용하여 구현한 다양한 채팅 기능(메시지 전송, 삭제, 답장 등)을 제공합니다. 추가로 화면 좌측 사이드바에는 대화방 목록, 채널 목록, 연락처 목록을 제공합니다.
 
-<br/>
+### 로그인
 
-## 요구 사항 및 추가 구현사항
-### 채팅 메시지 관리
+- floating label 구현
+
+  - input과 label 태그를 div로 감싼 후, input에 focus가 되었거나 작성 내용이 존재할 경우, label이 input창 상단으로 올라가도록 구현
+
+- 로그인
+
+  - form 태그를 이용해 엔터키으로 로그인 가능
+  - input 태그의 maxLength attribute를 활용해 과도하게 긴 이름을 방지
+
+- 에러 방지
+  - 이름 없이 submit 버튼 누를시 따로 input 태그 border-color 빨간 색으로 변경
+  - 로그인하지 않은 채 채팅방 접근 시 자동으로 로그인 페이지로 이동
+
+### 채팅 관련
+
 - 메시지 전송
-    - 엔터키로 전송할 수 있고, 입력시 전송버튼은 즉시 활성화.
-    - 컨텐츠를 입력하지 않으면 전송 불가.
-    - 입력란은 멀티라인으로 입력하고 메시지에서의 출력도 그대로 출력.
+
+  - 컨텐츠 입력 시 메시지 전송 가능, 컨텐츠 없을 시 비활성화
+  - shift + 엔터키로 줄바꿈, 엔터키로 전송 구현
+  - useRef와 scrollIntoView 활용해 새로운 메시지 전송 시 채팅창 스크롤 되도록 구현
+
 - 메시지 삭제
-    - 삭제 버튼을 클릭하면 "*** 메시지를 삭제하시겠습니까?" 라는 메시지가 출력되며 응답시 삭제.
-    - ***은 메시지 내용중 최대 10자 까지 보여주며 뒤에는 ... 처리.
+
+  - 삭제 버튼을 클릭하면 "{메시지} 메시지를 삭제하시겠습니까?" 라는 메시지가 모달창에 출력
+  - 메시지 내용 중 최대 10자 까지 보여주며 뒤에는 ... 처리
+  - 삭제 버튼 누를 시 Redux 스토어와 채팅창에서 삭제
+
 - 메시지 답장
-    - 답장을 클릭하면 "사용자 이름\n" + "메시지 내용\n" + "(회신)\n" 문자가 입력창에 자동으로 삽입되록 구현.
-    - \n 개행, 입력창에 내용이 존재할때는 입력된 내용 앞에 입력.
+
+  - 답장을 클릭하면 "사용자 이름\n" + "메시지 내용\n" + "(회신)\n" 입력창 앞에 자동으로 삽입
+  - 메시지에 대한 답장 전송 시, 채팅창에서도 메시지 앞에 답장을 적어두어 답장임을 확인 가능
+
 - 메시지 정렬
-    - 메시지의 정렬은 과거 부터 최신 순으로 정렬.
-    - 대화목록은 미리 생성된 데이터로 3명이 5건의 메시지를 주고 받는 내용이 출력
-    - 날짜의 경우 yyyy-mm-dd hh:MM:ss 포멧으로 출력, 내가 전송한 메시지의 경우 이름 옆에 * 문자 출력.
+
+  - 메시지의 정렬은 오래된 순으로 정렬
+  - 날짜의 경우 yyyy-mm-dd hh:MM:ss 포멧으로 출력, 내가 전송한 메시지의 경우 이름 옆에 \* 문자 출력.
+
 ### 레이아웃
-- 대화 목록
-    - 대화목록은 상단에 위치하며, 입력창은 하단
-    - 입력창과는 별도로 대화목록만 스크롤
-- 입력창
-    - 왼쪽에는 입력란, 오른쪽에는 보내기 버튼
-- 메시지
-    - 왼쪽에는 프로필 이미지, 오른쪽에는 이름과 보낸 날짜, 하단에는 보낸 메시지의 내용이 출력, 메시지의 가장 오른쪽에는 삭제 버튼과 답장 버튼.
-- (추가 구현) 좌측 메뉴
-    - 사이드바 상단에는 현재 로그인 되어있는 유저의 정보를 표시
-    - 메시지 / 연락처 두 개의 탭을 나눠 각 탭 별로 토글 버튼 구현
-    - 메시지 탭에는 채팅방 목록과 public channel 목록 구현
-    - 연락처 탭에는 연락처 리스트와 연락처 검색 가능한 input 구현
-    - 사이드바 하단에는 로그아웃 버튼 구현
-### (추가 구현)리덕스 사용
+
+- 사이드바
+  - 사이드바 상단에는 현재 로그인되어있는 사용자의 정보를 표시
+  - 톱니바퀴 아이콘 눌러 사용자 정보 수정 모달 창 켤 수 있도록 구현
+  - 메시지 / 연락처 두 개의 탭을 나눠 탭별로 토글 버튼 구현
+  - 메시지 탭에는 대화방 목록과 채널명 목록 구현
+  - 연락처 탭에는 연락처 리스트와 연락처 검색할 수 있는 input 구현
+
+### Redux Toolkit
+
 - `리덕스 툴킷`으로 로그인, 메시지, 모듈의 데이터 모델을 관리.
-    - 로그인 데이터 모델: login, logout, editUserName, changeChattingStatue
-    - 메시지의 데이터 모델 id, userId, userName, profileImage, content, date
-- `커스텀 훅`을 통해 컴포넌트와 전역 상태 관리 코드를 분리시켜 유지보수가 용이하게 하고, 중복을 줄임과 동시에 사용하기 편리하도록 만들었습니다.
-- 가능하면 테스트 코드를 작성해, 다른 팀원들이 봐도 금방 사용법을 알 수 있도록 만들었습니다.
-### (추가구현) 로그인
-기능 명세에 적혀있진 않았지만, 채팅 앱에 관한 팀원들과의 회의 결과 간단한 로그인 페이지를 만들기로 결정.
-- 로그인 기능
-    - form 태그를 이용해 `enter` key 입력으로 로그인
-    - input 태그의 maxLength attribute를 활용해 너무 긴 이름을 막음.
-- 이상 동작 감지
-    - 이름을 정하지 않고 submit 버튼 누를시 따로 구현한 경고 모달 컴포넌트 표출. 모달창을 닫고 다시 로그인 화면으로 들어오면 로그인 input에 붉은 underline 생성
-    - 이름을 정하지 않고 url을 통해 채팅방 접근시 모달창 출력과 강제 redirect
-<br/>
+  - 유저 정보 수정: login, logout, editUserName, changeChattingStatus
+  - 메시지 모델: id, userId, userName, profileImage, content, date
+- 커스텀 훅을 활용해 컴포넌트와 전역 상태 관리 코드를 분리함으로써 코드 유지 및 보수를 쉽게 하고, 코드 중복을 줄여 편의성 향상
 
-## 📌 역할  
+## 리팩토링
 
-### 문현돈
+- 리팩토링 이전: [링크](https://youthful-almeida-e80ef9.netlify.app/)
+- 리팩토링 후: [링크](https://swit-messenger.vercel.app/)
 
-- 역할
-    - 전반적인 스타일링 담당. 이번 과제는 디자인이 따로 주어지지 않았기 때문에, 과제를 시작하기 전 [dribbble](https://dribbble.com/search/shots/popular/web-design?q=messenger)에 올라온 다양한 메신저앱 디자인, 그리고 Skype, Telegram, Discord 등 인기 메신저 앱 디자인을 참고해 이번 프로젝트를 어떻게 구현할 지 정했다. 미디어 쿼리를 활용해 모바일 및 데스크탑 크기에 맞춰 반응형으로 사이드바 및 대화 목록, 메시지 입력창 구현했다.
-- 회고
-    - 이번 과제는 이전과 달리 비즈니스 로직보다는 오로지 디자인에만 집중했다. 특이하게도 텍스트로만 과제가 주어져 초반에 디자인을 정하는데 많은 시간을 할애했다. 그동안 코드에만 집중했었는데 이번 기회를 통해 데스크탑, 모바일 디자인을 직접 연구해보고 정해볼 수 있었다. 처음에는 대화 목록 기능이 만들어질 때까지 사이드바를 먼저 구현했는데, 대화 목록 컴포넌트와 사이드바 컴포넌트가 포지션상 겹칠 수 있다는 생각을 못한 채 그냥 만드는 실수를 범했다. 결국 대화 목록 컴포넌트까지 구현했을 때 모바일 화면에서 사이드바가 대화목록과 겹쳐버렸다. 여러 가지 방안을 강구해봤고, 최종적으로 택한 방법은 모바일 화면에서 사이드바가 닫혀있을 경우 position absolute를 활용해 화면 바깥으로 빼주는 것이다. 앞으로는 mock data를 활용하듯 mock component를 써서 위치를 임의로 잡는 연습을 해야할 것 같다.
-    
-<br />
+### 리팩토링 사항
 
-## 📌 사용 기술 및 스택
-- Stack
-    - `Redux Toolkit`
-    - `React Hooks`
-    - `scss-modules`
-    - Deploy : `Vercel`
-    - Other : `Git / GitHub`
-    - Build Tool (Create React App)
+- 로그인 및 채팅 페이지 디자인을 더 깔끔하게 구현
+- 사이드바를 position: absolute로 모바일 화면에서 숨기던 것을, width 크기를 조절하는 방식으로 바꿔서 더 자연스럽게 움직이도록 변경
+- 채팅 목록 중 마지막 메시지에 ref를 걸고 새로운 메시지가 생길 때마다 scrollIntoView를 활용해 채팅창이 가장 하단으로 움직이도록 구현
+- 유저명 변경, 로그아웃할 수 있는 환경 설정 모달 창 새롭게 구현
+- 다른 메시지에 대답 시 메시지 전송 버튼 높이가 커지는 것을 막기 위해 버튼 크기 고정 및 디자인 변경
+- 대화방 목록, 연락처 목록, 채팅 목록 hover 시 스크롤바가 나타나도록 변경
+- 메시지 삭제 시, 기존 모달 창에서 닫기 누르면 페이지가 꺼지는 문제 해결
 
-<br/ >
+### 기억에 남는 어려움
 
-## 📌 로컬 환경 구동
-- 프로젝트 클론
-  ```bash
-  git clone https://github.com/wanted-pre-onboading-10/swit-messenger
-  ```
-- 프로젝트 디렉토리 들어가기
-  ```bash
-  cd swit-messenger
-  ```
-- 패키지 설치 및 프로젝트 시작
-  ```bash
-  npm install && npm run start
-  ```
+textarea 요소를 활용해 메시지 입력을 가능하게 했다. 엔터키를 누를 시 메시지 전송이 되고, shift와 엔터키를 누를 시 줄 바꿈이 되도록 React onKeyDown 이벤트 핸들러를 활용했다. 각 이벤트 핸들러는 다음과 같다.
+
+```javascript
+const handleKeyDown = e => {
+  if (e.isComposing || e.keyCode === 229) return;
+
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendNewMessage();
+  }
+};
+```
+
+사용자가 누른 키가 엔터키인지, shift 키는 누르지 않았는지를 확인해서 만약 두 조건이 모두 성립할 때 `e.preventDefault()`로 줄 바꿈을 막고 새로운 메시지를 전송하도록 했다. 그런데 이 과정에서 한글로 메시지를 작성해서 전송할 때 onKeyDown 이벤트가 두 번 작동되는 것을 확인했다.
+
+![onKeyDown 에러](https://hyundonmoon-files.s3.amazonaws.com/onKeyDown_error.png)
+
+검색을 해보니 생각보다 많은 사람이 이 문제를 겪고 있음을 알 수 있었다. keydown, keyup 이벤트를 활용 시 이런 문제가 발생했고, 많은 사람이 해결하기 위해 keypress 이벤트를 대신 활용하고 있었다. 다만 근본적인 문제가 무엇인지 궁금해서 조금 더 찾아봤고, 결국 문제를 발생시키는 원인과 해결 방법을 찾아낼 수 있었다.
+
+기본적으로 브라우저가 제공하는 textarea와 input 요소는 한글, 일본어, 한자 등을 단독으로는 처리를 못 하는 듯하다. 이 문제를 해결하기 위해 Input Method Editor (IME)라는 프로그램이 사용자가 한글을 입력하면 그것을 "가로채" 대신 처리해준다. 그래서 한글을 입력하고 keyCode를 확인하면 229가 나오는 경우가 존재한다고 한다. 229 keyCode는 해당 이벤트를 IME가 처리했음을 나타낸다.
+
+이 과정에서 내가 겪은 문제가 발생했다. MDN을 읽어보니 IME가 작동하는 과정에서 keydown과 keyup 이벤트가 호출됨을 알게 되었다. 그래서 IME 처리 과정에서 한번, 처리 완료 후 한 번, 총 두 번 keydown 이벤트가 발생하는 것이었다.
+
+```javascript
+// 해결책
+if (e.isComposing || e.keyCode === 229) return;
+```
+
+다행히 문제 해결은 어렵지 않았다. MDN에 적혀있는 IME가 입력값을 처리 중일 때 발생하는 이벤트를 조건문을 활용해 무시해버리는 방법으로 해결했다. 이렇게 하니 keydown 이벤트가 두 번 발생하는 문제는 없어지고 의도한 대로 메시지를 전송할 때 딱 한 번만 keydown 이벤트가 발생하였다.
+
+[MDN 참고 자료](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event#ignoring_keydown_during_ime_composition)
