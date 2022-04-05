@@ -4,7 +4,6 @@ import classNames from 'classnames/bind';
 
 import Profile from 'components/sidebar/profile';
 import Switch from 'components/sidebar/switch';
-import Logout from 'components/sidebar/logout';
 import Contacts from 'components/sidebar/contacts';
 import Toggle from 'components/sidebar/toggle';
 import Dropdown from 'components/sidebar/dropdown';
@@ -50,7 +49,6 @@ function Sidebar({ isOpen, toggle }) {
         <section className={styles['sidebar-contents']}>
           {sidebarContents}
         </section>
-        <Logout />
       </div>
     </div>
   );
